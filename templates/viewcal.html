@@ -1,0 +1,38 @@
+<!-- modified from https://fullcalendar.io/docs/ -->
+
+{% extends "layout.html" %}
+
+{% block script %}
+<link href='{{ url_for('static', filename='calendar/fullcalendar.min.css') }}' rel='stylesheet' />
+<link href='{{ url_for('static', filename='calendar/fullcalendar.print.min.css') }}' rel='stylesheet' media='print' />
+<script src='{{ url_for('static', filename='calendar/moment.min.js') }}'></script>
+<script src='{{ url_for('static', filename='calendar/jquery.min.js') }}'></script>
+<script src='{{ url_for('static', filename='calendar/fullcalendar.min.js') }}'></script>
+<script src='{{ url_for('static', filename='calendar/calendar.js') }}'></script>
+<style>
+	body {
+		padding: 0;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 14px;
+	}
+
+	#calendar {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+</style>
+{% endblock %}
+
+{% block title %}
+    View Events
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>View All Student Organization Events</h1>
+    </div>
+    <p></p>
+    <div class="content">
+        <div id='calendar'></div>
+    </div>
+{% endblock %}

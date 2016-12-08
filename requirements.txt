@@ -1,0 +1,8 @@
+Flask
+Flask-Session
+passlib
+SQLAlchemy
+google-api-python-client
+Flask-JSGlue
+feedparser
+validators

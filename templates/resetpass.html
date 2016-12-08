@@ -1,0 +1,42 @@
+ {% extends "layout.html" %}
+
+{% block title %}
+    Change Your Password
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Change Your Password</h1>
+    </div>
+    <p></p>
+    <div class="content">
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="username">Username</label>
+                    <input name="username" type="text" placeholder="Username">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="huid">HUID</label>
+                    <input name="huid" type="tel" maxlength=8 placeholder="HUID (8 digits)"/>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="password">New Password</label>
+                    <input name="password" type="password" placeholder="Password">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input name="confirm_password" type="password" placeholder="Password (again)">
+                </div>
+                
+                <div class="pure-controls">
+                    <button type="submit" formmethod="post" class="button-harvard pure-button">Change Your Password</button>
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Register</h1>
+    </div>
+    <p></p>
+    
+    <div class="content">
+        <h2 class="content-subhead">All Fields Required</h2>
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="firstname">First Name</label>
+                    <input name="firstname" type="text" placeholder="First Name">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="lastname">Last Name</label>
+                    <input name="lastname" type="text" placeholder="Last Name">
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="username">Username</label>
+                    <input name="username" type="text" placeholder="Username">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" placeholder="Password">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input name="confirm_password" type="password" placeholder="Password (again)">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="huid">HUID</label>
+                    <input name="huid" type="tel" maxlength=8 placeholder="HUID (8 digits)"/>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="student_org">Student Organization</label>
+                    <select name="student_org">
+                        <option>--Select an Organization--</option>
+                        {% for item in organizations %}
+                        <option>{{ item["name"] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            
+                <div class="pure-controls">
+                    <button type="submit" formmethod="post" class="button-harvard pure-button">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>    
+{% endblock %}

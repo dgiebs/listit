@@ -1,0 +1,103 @@
+Much more than we originally thought, our project ended up being very focused on web design,
+minutious details and user friendliness. The website incorporates extensive use of SQL, Flask and 
+Python on the backend, and Javascript, HTML and CSS on the frontend. The result is an easy 
+to use website that displays information clearly to the user.
+
+                                    ~THE BACK END~
+
+A Python backend uses Flask to build a fully functional website. Each of its features are
+shown by the functions in application.py, (such as the standard register, login, logout,
+index, etc.) Here are some added functions that taught us a little bit about working with Flask as
+a backend.
+
+SQLITE
+SQL wqs used to store various types of information: 4 tables exactly. One is labeled "names." This
+is an unchanging list of names grabbed from the Harvard Facebook. The table originates from a file
+that was immported (after being encoded in TextWrangler do deal with line breaks correctly) as a 
+makeshift way to check if someone registering is actually a Harvard Undergrad. The original file is 
+names.txt. This is a workaround for not having access to the HarvardKey login.
+
+The "organizations" table, grabbed from the OSL website, assigns each organization an orgid, which is
+important for pairing events to their proper users. This list is displayed when a new user registers.
+the original file is organizations.csv. This is a workaround for not knowing which harvard students 
+are in which organizations (theHub).
+
+There's the "users" table, which stores registered users, tied to their chosen student organization.
+Nothing special here. There's also the "events" table, which stores events with all necessary information
+(see uploading photos for example). They are tied to their corresponding student organization.
+
+VIEWEVENT
+This website implements the technique of changing depending on the event_id given in the url. This allows
+different pages (viewevents, search, addevent) to easily redirect to viewevent through a proper url 
+extension.
+
+SEARCH
+allows you to search events by 3 different fields: name, type, date, and location. See the search() function
+to see how it works.
+
+EDITEVENT
+this page is very similar to add event. However, it uses the event being edited as default values by
+passing it to the HTML.
+
+FORGOTUSER and RESETPASS
+These are simple pages to change your password or retrieve your username given that you input certain
+information (name, HUID, etc).
+
+UPLOADING PHOTOS
+http://flask.pocoo.org/docs/0.11/patterns/fileuploads/
+We decided uploading photos would be a nice feature to allow organizations to give more information
+about their events. Using the tutorial above, we were able to show an upload file button that only
+accepts certain formats (photos, to prevent malware, etc., function in helpers.py). The photo is 
+displayed on the viewevent.html page, along as in a smaller icon version in viewevents.html. The photo
+is referenced in SQL so it can be easily accessed, and deleted as necessary.
+
+GOOGLE CALENDAR API
+Google Calendar API was used to add an "add to Google Calendar" button when you view any event.
+This was acheived through using Google's API info for incorporating Web-based application usage
+of Calendar with python. In summary, Python requests credentials, which are obtained using 
+client_secret.json (from Google API), and requesting the user to allow the website to have
+read/write access to their primary calendar. Then, the googlecal() function formats the given
+event's data properly, and sends it to Google.
+
+*NOTE: the add to google calendar feature will not work unless accessed from the cloud9 account
+danielgiebisch. This is because Google's API credential service requires that you tell Google what
+uri to expect (http://ide50-danielgiebisch.cs50.io/oauth2callback in this case). You can see it
+working in the video, and we can demonstrate it working for anyone who wishes to see it.
+
+                                        ~THE FRONT END~
+PURE CSS
+We decided to change things up from Boostrap and instead use purecss.io as the frontend "make up"
+for our website. This lightweight package of css (along with a small ui.js file) was allowed us
+to easily create a nice-looking website. We also played around with some settings, adding a background
+photo for the header, adding crimson as a background color for the upper left button and most submit
+buttons, and making small adjustments to padding, margins, alignment and whatnot when appropriate.
+These small edits gave us a good amount of experience dealing with css. For example, the calendar icon
+(code labeled "calendar icon" in style.css, and shown when viewing an event or used in viewevents
+when an event does not have an associated photo) was built from the code behind the price buttons found
+here: http://purecss.io/layouts/pricing/. It also gave us some in depth experience with datetime
+formatting and transformations from datetime to string and vice versa.
+
+ONSITE CALENDAR
+We also worked with Javascript in the viewcal.html page. This page uses a package of CSS and JS
+files from fullcalendar.io. Once implementing the standard version provided by the website, we 
+adjusted colors in css to fit the crimson theme. Then, we had to allow the calendar to get 
+event information from SQL. This was done with the events() function in application.py, which,
+similar to PSet 8, returns json data of all listed events. This json source is read by the 
+calendar's JS, and displayed nicely on the calendar in viewcal.html.
+
+OTHER FEATURES
+An alert bar comes up when appropriate (errors when filling out a form, no events for your search,
+etc). This alert bar was implemented from a website tutorial, and uses css for the design, as well
+as showing "click to dismiss" when hovering over it. The bar uses JS to actually dismiss when clicked.
+http://joshnh.com/weblog/how-to-make-an-alert-bar
+
+A confirmation alert window pops up when deleting an event, to make sure the user wants to do so.
+This was implemented using inline js.
+
+A cool feature we added was the default date shown when adding an event. The start date defaults to
+today, and once you have edited it, the end date defaults to whatever is used in the start date. This 
+is a small script shown in addevent.html (as it is only used for this page).
+
+overall, we feel that our project takes a very simple goal of acting as an events manager, and does
+it really well. We worked hard to make sure we covered as many bases as possible for possible use
+scenarios for different people!

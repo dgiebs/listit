@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Change Your Password</h1>
+    </div>
+    
+    <div class="content">
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="passwordOld">Old Password</label>
+                    <input name="passwordOld" type="password" placeholder="Old Password">
+                </div>
+    
+                <div class="pure-control-group">
+                    <label for="passwordNew">New Password</label>
+                    <input name="passwordNew" type="password" placeholder="New Password">
+                </div>
+    
+                <div class="pure-control-group">
+                    <label for="passwordCheck">Confirm Password</label>
+                    <input name="passwordCheck" type="password" placeholder="New Password (again)">
+                </div>
+                
+                <div class="pure-controls">
+                    <button type="submit" formmethod="post" class="button-harvard pure-button">Change Password</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

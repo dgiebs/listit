@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Search</h1>
+    </div>
+    <p></p>
+    
+    <div class="content">
+        <script>
+            $(document).ready( function() {
+                $('#date').val(new Date().toDateInputValue());
+            });
+        </script>
+        
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="name">Search by Name</label>
+                    <input name="name" type="text" placeholder="Name">
+                </div>
+                    
+                <pre></pre>
+                
+                <div class="pure-control-group">
+                    <label for="location">Search by Location</label>
+                    <input name="location" type="text" placeholder="Location">
+                </div>
+
+                <pre></pre>
+                
+                <div class="pure-control-group">
+                    <label for="type">Type of Event *</label>
+                    <select name="type">
+                        <option>--Select an Event Type--</option>
+                        <option>Concert</option>
+                        <option>Lecture</option>
+                        <option>Party</option>
+                        <option value="Seminar">Seminar</option>
+                        <option>Study Break</option>
+                        <option>Panel Discussion</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                
+                <pre></pre>
+                
+                <div class="pure-control-group">
+                    <label for="date">Search by Date</label>
+                    <input id = "date" name="date" type="date" placeholder="Date">
+                </div>
+                    
+                <div class="pure-controls">
+                <button type="submit" formmethod="post" class="button-harvard pure-button">Search</button>
+                </div></fieldset>
+        </form
+    </div>    
+{% endblock %}

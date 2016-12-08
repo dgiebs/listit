@@ -1,0 +1,78 @@
+<!-- similar to addevent, execept all fields start with the edited event's fields -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit Your Event
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Edit Your Event!</h1>
+    </div>
+    <p></p>
+        
+        <div class="content">
+        <form class="pure-form pure-form-aligned" enctype="multipart/form-data">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="name">Event Name *</label>
+                    <input name="name" type="text" value="{{ event["name"] }}">
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="type">Type of Event *</label>
+                    <select name="type">
+                        <option>--Select an Event Type--</option>
+                        <option {% if event["type"] == "Concert" %} selected="selected" {% endif %}>Concert</option>
+                        <option {% if event["type"] == "Lecture" %} selected="selected" {% endif %}>Lecture</option>
+                        <option {% if event["type"] == "Party" %} selected="selected" {% endif %}>Party</option>
+                        <option {% if event["type"] == "Seminar" %} selected="selected" {% endif %}>Seminar</option>
+                        <option {% if event["type"] == "Study Break" %} selected="selected" {% endif %}>Study Break</option>
+                        <option {% if event["type"] == "Panel Discussion" %} selected="selected" {% endif %}>Panel Discussion</option>
+                        <option {% if event["type"] == "Other" %} selected="selected" {% endif %}>Other</option>
+                    </select>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="startdate">Start Date *</label>
+                    <input name="startdate" type="date" value = "{{ event["startdate"] }}"/>
+                    <label for="starttime">Start Time *</label>
+                    <input name="starttime" type="time" value = "{{ event["starttime"] }}"/>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="enddate">End Date *</label>
+                    <input name="enddate" type="date" value = "{{ event["enddate"] }}"/>
+                    <label for="endtime">End Time *</label>
+                    <input name="endtime" type="time" value = "{{ event["endtime"] }}"/>
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="location">Location</label>
+                    <input name="location" type="text" placeholder="Location" value = "{{ event["location"] }}">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" class="pure-input-1-2" placeholder="Description (300 character limit)" maxlength="300">{{ event["description"] }}</textarea>
+                </div>
+    
+        
+                <div class="pure-control-group">
+                    <label for="link">Add a Link</label>
+                    <input name="link" type="text" placeholder="Link" value = "{{ event["link"] }}">
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="photo">Change Photo</label>
+                    <input type=file name=file>
+                </div>
+            
+                <div class="pure-controls">
+                    <button type="submit" formmethod="post" class="button-harvard pure-button">Save</button><p>* Required Field</p>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

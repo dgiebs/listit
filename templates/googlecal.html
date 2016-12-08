@@ -1,0 +1,19 @@
+<!-- shown after an event is added to user's google calendar -->
+{% extends "layout.html" %}
+
+{% block title %}
+    Event Added
+{% endblock %}
+
+{% block main %}
+<div id="main">
+    <div class="header h1">
+        <h1>Event Added</h1>
+    </div>
+    
+    <div class="content">
+        <h3 style="text-align:center">Successfully added your Event "{{ name }}" to your primary Google Calendar</h2>
+        <h3 style="text-align:center">Click <a href="https://calendar.google.com">here</a> to go to see your calendar.</h2>
+    </div>
+</div>
+{% endblock %}

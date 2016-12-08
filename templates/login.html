@@ -1,0 +1,36 @@
+ {% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Log In</h1>
+    </div>
+    <p></p>
+    <div class="content">
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="username">Username</label>
+                    <input name="username" type="text" placeholder="Username">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="password">Password</label>
+                    <input name="password" type="password" placeholder="Password">
+                </div>
+                <div class="pure-controls">
+                    <button type="submit" formmethod="post" class="button-harvard pure-button">Submit</button>
+                </div>
+                &nbsp;
+                <div class = "content">
+                    <a href="https://ide50-danielgiebisch.cs50.io/forgotuser" alt="Side Menu CSS">Forgot username?</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="https://ide50-danielgiebisch.cs50.io/resetpass" alt="Side Menu CSS">Forgot password?</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

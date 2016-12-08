@@ -1,0 +1,37 @@
+ {% extends "layout.html" %}
+
+{% block title %}
+    Get Your Username
+{% endblock %}
+
+{% block main %}
+    <div class="header">
+        <h1>Get Your Username</h1>
+    </div>
+    <p></p>
+    <div class="content">
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="firstname">First Name</label>
+                    <input name="firstname" type="text" placeholder="First Name">
+                </div>
+        
+                <div class="pure-control-group">
+                    <label for="lastname">Last Name</label>
+                    <input name="lastname" type="text" placeholder="Last Name">
+                </div>
+                
+                <div class="pure-control-group">
+                    <label for="huid">HUID</label>
+                    <input name="huid" type="tel" maxlength=8 placeholder="HUID (8 digits)"/>
+                </div>
+                
+                <div class="pure-controls">
+                    <button type="submit" formmethod="post" class="button-harvard pure-button">Get Username</button>
+                </div>
+                
+            </fieldset>
+        </form>
+    </div>
+{% endblock %}

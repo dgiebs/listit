@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!doctype html>
+<html lang="en">
+    
+    <head>
+        
+        <!-- Install css from Pure and specific style file -->
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.0/build/pure-min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% calendar script %}{% endblock %}
+        
+        <!-- Install js requirements -->
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+        <title>List It! {% block title %}{% endblock %}</title>
+    </head>
+    
+    <body>
+
+        <div id="layout">
+            <!-- Menu toggle -->
+            <a href="#menu" id="menuLink" class="menu-link">
+                <!-- Hamburger icon -->
+                <span></span>
+            </a>
+        
+            <div id="menu">
+                <div class="pure-menu custom-restricted-width">
+                    <a class="pure-menu-heading" href="{{ url_for('index') }}">List It!</a>
+                    {% if session.user_id %}
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item" role="presentation"><a href="{{ url_for('viewevents') }}" class="pure-menu-link">View Your Events</a></li>
+                        <li class="pure-menu-item" role="presentation"><a href="{{ url_for('viewcal') }}" class="pure-menu-link">View All Events</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('search') }}" class="pure-menu-link">Search</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('addevent') }}" class="pure-menu-link">Add Event</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('changepass') }}" class="pure-menu-link">Change Password</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('logout') }}" class="pure-menu-link">Log Out</a></li>
+                    </ul>
+                    {% else %}
+                    <ul class="pure-menu-list">
+                        <li class="pure-menu-item"><a href="{{ url_for('viewcal') }}" class="pure-menu-link">View</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('search') }}" class="pure-menu-link">Search</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('register') }}" class="pure-menu-link">Register</a></li>
+                        <li class="pure-menu-item"><a href="{{ url_for('login') }}" class="pure-menu-link">Log In</a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        
+            {% if get_flashed_messages() %}
+                <header>
+                    <div id="alert">
+                        <a class="alert"span onclick="this.parentElement.style.display='none';">{{ get_flashed_messages() | join(" ") }}</a>
+                    </div>
+                </header>
+            {% endif %}
+        
+            <main>
+                {% block main %}{% endblock %}
+            </main>
+        </div>
+        <script src="{{ url_for('static', filename='ui.js') }}"></script>
+    </body>
+</html>
